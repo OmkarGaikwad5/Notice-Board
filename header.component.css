@@ -1,0 +1,92 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
+.heading{
+ margin-left:625px;
+ font-family: "Montserrat";
+ font-size: 20px; 
+ padding: 5px;
+ border: 2px solid black;
+ border-radius: 10px;
+
+ background-color: rgb(218, 237, 237);
+ 
+}
+
+.container-fluid{
+    font-family: "Montserrat";
+ font-size: 20px;
+}
+
+.notice{
+    min-height: 65vh;
+    margin-left: 15px;
+    margin-top: 10px;
+    text-align: center;
+    width: 98%;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    border: 2px solid black;
+
+}
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 30px;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+   
+  
+    
+}
+
+.create{
+padding: 10px;
+border: 2px solid black;
+border-radius: 10px;
+cursor:pointer;
+}
+
+.edit{
+
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    cursor:pointer;
+}
+
+.view{
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+cursor:pointer;
+}
+
+.delete{
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+cursor:pointer;
+}
+
+
+.create:hover{
+    background-color: aquamarine;
+   
+}
+
+.edit:hover{
+    background-color: aquamarine;
+}
+
+.view:hover{
+    background-color: aquamarine;
+}
+
+.delete:hover{
+    background-color: aquamarine;
+}
