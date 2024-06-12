@@ -1,15 +1,17 @@
 let createButton = document.getElementsByClassName("create")[0];
-let editButton = document.getElementsByClassName("edit")[0];
 let viewButton = document.getElementsByClassName("view")[0];
-let deleteButton = document.getElementsByClassName("delete")[0];
 
+let home = document.getElementById("home");
 let buttons = document.getElementsByClassName("buttons")[0];
-
 let isButtonView = false;
 let buttonView = document.getElementsByClassName("buttons")[0];
 
-let NoticeView = document.getElementsByClassName("NoticeView")[0];
+let searchEl = document.getElementById("search");
+let searchInput = document.getElementById("searchVal")
+let cancelSearch = document.getElementById("cancel");
+let searchBtn = document.getElementById("submit");
 
+let NoticeView = document.getElementsByClassName("NoticeView")[0];
 let NoticeCraft = document.getElementsByClassName("NoticeCraft")[0];
 let noticeContent = document.getElementsByClassName("notice")[0];
 let craftButton = document.getElementById("craftButton");
@@ -26,25 +28,25 @@ createButton.addEventListener("click", () => {
     craftButton.textContent = "Create Notice";
 });
 
-
-editButton.addEventListener("click", () => {
-    NoticeCraft.style = "display: block;";
-    craftButton.style = "display: block;";
-    craftButton.textContent = "Edit Notice";
-});
-
-deleteButton.addEventListener("click", () => {
-    NoticeCraft.style = "display: block;";
-    craftButton.style = "display: block;";
-    craftButton.textContent = "Delete Notice";
-});
+cancelSearch.addEventListener("click", () => {
+    searchEl.style = "display: none";
+})
 
 viewButton.addEventListener("click", () => {
-    
+    searchEl.style = "display: block";
 });
+
+home.addEventListener("click", () => {
+    NoticeView.innerHTML = "";
+    NoticeCraft.style = "display: none";
+    notices.forEach(notice => {
+        noticeElements(notice);
+    })
+})
 
 craftButton.addEventListener("click", (el) => {
     let button = checkButton(el.target.innerHTML);
+    console.log(button)
     if (button == 1) {
         createNotice();
     } else if (button == 2) {
@@ -84,6 +86,9 @@ const craftNotice = (div, p, box, del, edit, data) => {
     p.textContent = data;
     del.textContent = "delete";
     edit.textContent = "edit";
+    del.classList.add('button');
+    del.style = "color: red;";
+    edit.classList.add('button');
     edit.accessKey = notices.length
     del.accessKey = notices.length
     box.appendChild(del);
@@ -117,12 +122,11 @@ const editNotice = (key) => {
     notices.forEach(notice => {
         noticeElements(notice);
     });
+    NoticeCraft.style = "display: none;"
 }
 const viewNotice = () => {
-    let search = document.createElement("input");
-    document.body.appendChild(search);
-    search.style = 'display: block';
-    let n = notices.includes(search.value);
+    console.log("Fired!")
+    searchEl.style = "display: block";
     
 }
 const deleteNotice = (key) => {
@@ -133,3 +137,13 @@ const deleteNotice = (key) => {
         noticeElements(notice);
     });
 }
+
+searchBtn.addEventListener("click", () => {
+    searchEl.style = "display: none";
+    let snap = searchInput.value;
+    let snapShot = notices.filter(el => el.search(snap) != -1);
+    NoticeView.innerHTML = "";
+    snapShot.forEach(res => {
+        noticeElements(res);
+    });
+});

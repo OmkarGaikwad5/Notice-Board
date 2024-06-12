@@ -1,18 +1,10 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 
 
-.heading{
- margin-left:625px;
- font-family: "Montserrat";
- font-size: 20px; 
- padding: 5px;
- border: 2px solid black;
- border-radius: 10px;
-
- background-color: rgb(218, 237, 237);
- 
+.heading {
+    display: flex;
+    justify-content: end;
 }
 
 .navbar {
@@ -20,12 +12,12 @@
     display: flex;
 }
 
-.container-fluid{
+.container-fluid {
     font-family: "Montserrat";
- font-size: 20px;
+    font-size: 20px;
 }
 
-.notice{
+.notice {
     min-height: 65vh;
     margin-left: 15px;
     margin-top: 10px;
@@ -37,7 +29,7 @@
 
 }
 
-.buttons{
+.buttons {
     position: sticky;
     bottom: 0;
     width: 100vw;
@@ -49,53 +41,6 @@
     font-size: 20px;
     font-family: 'Montserrat', sans-serif;
     background-color: white;
-}
-
-.create{
-padding: 10px;
-border: 2px solid black;
-border-radius: 10px;
-cursor:pointer;
-}
-
-.edit{
-
-    padding: 10px;
-    border: 2px solid black;
-    border-radius: 10px;
-    cursor:pointer;
-}
-
-.view{
-    padding: 10px;
-    border: 2px solid black;
-    border-radius: 10px;
-cursor:pointer;
-}
-
-.delete{
-    padding: 10px;
-    border: 2px solid black;
-    border-radius: 10px;
-cursor:pointer;
-}
-
-
-.create:hover{
-    background-color: aquamarine;
-   
-}
-
-.edit:hover{
-    background-color: aquamarine;
-}
-
-.view:hover{
-    background-color: aquamarine;
-}
-
-.delete:hover{
-    background-color: aquamarine;
 }
 
 
@@ -111,26 +56,73 @@ cursor:pointer;
 }
 
 .displayNotice {
+    min-height: 200px;
     display: flex;
     height: fit-content;
     width: 100%;
     justify-content: start;
-    align-items: center;
     border: 1px solid black;
     margin-bottom: 10px;
     padding: 10px;
     justify-content: space-between;
+    border-radius: .75rem;
+}
+
+
+
+.button {
+    border: none;
+    border-radius: .75rem;
+    background: gainsboro;
+    color: black;
+    padding: 10px 15px;
+    animation: 1s;
+    transition: 1s;
+}
+
+.create {
+    border-radius: .75rem;
+    background: lightpink;
+    color: blueviolet;
+    animation: 1s;
+    transition: 1s;
+}
+
+.button:hover {
+    cursor: pointer;
+    transition: 1s;
+    background: lightgreen;
+    color: blueviolet !important;
+}
+
+textarea {
+    border-radius: .75rem;
+    border: none !important;
+    background: lightcyan;
+    color: rebeccapurple;
+    padding: 1rem;
+    text-align: start;
+}
+
+textarea::selection {
+    border: none !important;
+
 }
 
 .box {
     display: flex;
     gap: 10px;
+    align-items: center;
 }
 
 #craftButton {
     border-radius: 0.75rem;
     padding: 5px 10px;
-    background: white;
+    background: lightpink;
+}
+
+#craftButton:hover {
+    background: greenyellow;
 }
 
 .NoticeCraft {
@@ -138,6 +130,33 @@ cursor:pointer;
     transition: 1s;
     padding-right: 10px;
     height: fit-content;
+    margin-right: 1rem;
 }
 
-#search { position: absolute; top: 40%; left: 40%; padding: .5rem 1rem; }
+#search {
+    position: fixed;
+    top: 40%;
+    left: 30%;
+    padding: .5rem 1rem;
+    display: none;
+    background: white;
+}
+
+#search input {
+    border-radius: .75rem;
+    background: white;
+    padding: 1rem;
+    margin-right: 5px;
+}
+
+#search button {
+    border: none;
+    font-size: 1.75rem;
+    background: none;
+}
+
+.danger {
+    transition: .5s;
+    color: red !important;
+    padding: 10px !important;
+}
