@@ -15,9 +15,9 @@ let NoticeView = document.getElementsByClassName("NoticeView")[0];
 let NoticeCraft = document.getElementsByClassName("NoticeCraft")[0];
 let noticeContent = document.getElementsByClassName("notice")[0];
 let craftButton = document.getElementById("craftButton");
+
 NoticeCraft.style = "display: none;";
 craftButton.style = "display: none;";
-
 
 let notices = [];
 
@@ -46,7 +46,6 @@ home.addEventListener("click", () => {
 
 craftButton.addEventListener("click", (el) => {
     let button = checkButton(el.target.innerHTML);
-    console.log(button)
     if (button == 1) {
         createNotice();
     } else if (button == 2) {
@@ -73,15 +72,18 @@ function checkButton (target) {
 }
 
 const noticeElements = (data) => {
+    NoticeView.innerHTML = "";
+    data.forEach(el => {
     let div = document.createElement("div");
     let p = document.createElement("p");
     let box = document.createElement("div");
     let del = document.createElement("button");
     let edit = document.createElement("button");
-    craftNotice(div, p, box, del, edit, data);
+        craftNotice(div, p, box, del, edit, el.description, el.key);
+    });
 }
 
-const craftNotice = (div, p, box, del, edit, data) => {
+const craftNotice = (div, p, box, del, edit, data, key) => {
     div.classList.add("displayNotice");
     p.textContent = data;
     del.textContent = "delete";
@@ -89,8 +91,8 @@ const craftNotice = (div, p, box, del, edit, data) => {
     del.classList.add('button');
     del.style = "color: red;";
     edit.classList.add('button');
-    edit.accessKey = notices.length
-    del.accessKey = notices.length
+    edit.accessKey = key;
+    del.accessKey = key;
     box.appendChild(del);
     box.appendChild(edit);
     div.appendChild(p);
@@ -99,9 +101,10 @@ const craftNotice = (div, p, box, del, edit, data) => {
     box.classList.add("box");
     edit.addEventListener('click', (el) => {
         NoticeCraft.style = "display: block";
-        craftButton.textContent = "Edit Notice"
-        noticeContent.value = notices[el.target.accessKey - 1];
-        craftButton.accessKey = el.target.accessKey - 1;
+        craftButton.textContent = "Edit Notice";
+        let editNoticeData = notices.find(el => el.key == key);
+        noticeContent.value = editNoticeData.description;
+        craftButton.accessKey = editNoticeData.key;
     });
     del.addEventListener("click", (el) => {
         deleteNotice(el.target.accessKey);
@@ -111,39 +114,37 @@ const craftNotice = (div, p, box, del, edit, data) => {
 const createNotice = () => {
     const data = noticeContent.value;
     noticeContent.value = "";
-    notices.push(data);
-    noticeElements(data);
+    let key = generateKey()
+    notices.push({title:"Notice", description: data, key: key});
+    noticeElements(notices);
     NoticeCraft.style = "display: none;";
 }
 const editNotice = (key) => {
-    notices[key] = noticeContent.value;
-    noticeContent.value = "";
-    NoticeView.innerHTML = "";
-    notices.forEach(notice => {
-        noticeElements(notice);
+    notices = notices.map(el => {
+        if (el.key == key) {
+            return { ...el, description: noticeContent.value };
+        }
+        return el;
     });
+    noticeContent.value = "";
+    noticeElements(notices);
     NoticeCraft.style = "display: none;"
 }
 const viewNotice = () => {
-    console.log("Fired!")
     searchEl.style = "display: block";
-    
 }
 const deleteNotice = (key) => {
-    let delEl = notices[key - 1];
-    notices = notices.filter(el => el != delEl);
-    NoticeView.innerHTML = "";
-    notices.forEach(notice => {
-        noticeElements(notice);
-    });
+    notices = notices.filter(el => el.key != key);
+    noticeElements(notices);
 }
 
 searchBtn.addEventListener("click", () => {
     searchEl.style = "display: none";
     let snap = searchInput.value;
     let snapShot = notices.filter(el => el.search(snap) != -1);
-    NoticeView.innerHTML = "";
-    snapShot.forEach(res => {
-        noticeElements(res);
-    });
+    noticeElements(snapShot);
 });
+
+function generateKey () {
+    return `${Math.floor(Math.random() * 1000)}_Math`;
+}
