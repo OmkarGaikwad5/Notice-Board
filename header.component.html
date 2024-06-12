@@ -1,68 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Notice Board</title>
-  <link rel="stylesheet" href="./header.component.css"/>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-   integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" 
-   crossorigin="anonymous" referrerpolicy="no-referrer" />
+  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./header.component.css" />
 </head>
+
 <body>
   <div class="all">
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    
-    
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Home</a>
-    
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <div class="heading">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Notice Board</a>
-          </li>
+    <div id="search">
+      <input type="text" id="searchVal">
+      <button id="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <br>
+      <div class="heading">
+        <button class="button danger" id="cancel">cancel</button>
+      </div>
+    </div>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" id="home" href="#">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <div class="heading">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Notice Board</a>
+              </li>
+            </div>
         </div>
       </div>
+
+
+    </nav>
+
+    <div class="Notice">
+      <div class="NoticeView">
+
       </div>
-    
-  
-  </nav>
-
-
-  <textarea class="notice" placeholder="Notice To Be Entered Here"></textarea>
-
-  <div class="buttons">
-
-    <div class="create">
-      <div><i class="fa-solid fa-plus"></i>
-        Create</div>
+      <div class="NoticeCraft">
+        <textarea class="notice" placeholder="Notice To Be Entered Here"></textarea>
+        <div style="display: flex; justify-content: center; align-items: center;">
+          <button id="craftButton" class="button"></button>
+        </div>
+      </div>
     </div>
 
-    <div class="edit">
-      <div><i class="fa-solid fa-pen-to-square"></i>
-        Edit</div>
-    </div>
-    
-    <div class="view">
-      <div><i class="fa-solid fa-magnifying-glass"></i>
-        View</div>
+
+
+    <div class="buttons">
+
+      <div class="create">
+        <div class="button create"><i class="fa-solid fa-plus"></i>
+          Create</div>
       </div>
-  
-      <div class="delete">
-    <div><i class="fa-solid fa-trash"></i>
-      Delete</div>
-  </div>
+      <div class="view">
+        <div class="button"><i class="fa-solid fa-magnifying-glass"></i>
+          View</div>
+      </div>
+    </div>
 
-</div>
-
-
+    <script src="header.component.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </div>
+
 </html>
