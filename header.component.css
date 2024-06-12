@@ -15,6 +15,11 @@
  
 }
 
+.navbar {
+    align-items: center;
+    display: flex;
+}
+
 .container-fluid{
     font-family: "Montserrat";
  font-size: 20px;
@@ -33,15 +38,17 @@
 }
 
 .buttons{
+    position: sticky;
+    bottom: 0;
+    width: 100vw;
+    padding: 1rem;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     margin-top: 30px;
     font-size: 20px;
     font-family: 'Montserrat', sans-serif;
-   
-  
-    
+    background-color: white;
 }
 
 .create{
@@ -90,3 +97,47 @@ cursor:pointer;
 .delete:hover{
     background-color: aquamarine;
 }
+
+
+.Notice {
+    height: 100vh;
+    display: flex;
+    gap: 1rem;
+}
+
+.NoticeView {
+    flex-grow: 1;
+    padding: 10px;
+}
+
+.displayNotice {
+    display: flex;
+    height: fit-content;
+    width: 100%;
+    justify-content: start;
+    align-items: center;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.box {
+    display: flex;
+    gap: 10px;
+}
+
+#craftButton {
+    border-radius: 0.75rem;
+    padding: 5px 10px;
+    background: white;
+}
+
+.NoticeCraft {
+    width: 50%;
+    transition: 1s;
+    padding-right: 10px;
+    height: fit-content;
+}
+
+#search { position: absolute; top: 40%; left: 40%; padding: .5rem 1rem; }
